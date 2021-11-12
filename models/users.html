@@ -5,9 +5,12 @@
 
     <h1>Faculty Feedback Form</h1>
 
-    <form action="/" method="POST">
-<label for="fname">Faculty ID
-                <input type="text" name="fname" id="fname" placeholder="First Name" required autocomplete="First Name">
+    <form action="./myaction" method="POST">
+        <label for="sname">Student ID
+            <input type="text" name="sname" id="sname" placeholder="student Name" required autocomplete="student Name">
+        </label> <br><br>
+        <label for="fname">Faculty ID
+                <input type="text" name="fname" id="fname" placeholder="faculty Name" required autocomplete="faculty Name">
             </label> <br><br>
         <p>1.Effectively utilizes the classroom interaction time for syllabus transaction; illustrate the concepts
             through examples & applications and creates interest in the course?</p>
@@ -75,15 +78,15 @@
           <label for="opt5">Completly Disagree</label>
 
         <p>6.Utilizes student centric methods, such as experiential learning, participative learning and problem solving methodologies for enhancing learning experiences.</p>
-        <input type="radio" id="opt1" name="q5" value="opt1">
+        <input type="radio" id="opt1" name="q6" value="opt1">
           <label for="opt1">Completly Agree</label>
-          <input type="radio" id="opt2" name="q5" value="opt2">
+          <input type="radio" id="opt2" name="q6" value="opt2">
           <label for="opt2">Agree Upto 75%</label>
-          <input type="radio" id="opt3" name="q5" value="opt3">
+          <input type="radio" id="opt3" name="q6" value="opt3">
           <label for="opt3">Agree Upto 50%</label>
-        <input type="radio" id="opt4" name="q5" value="opt4">
+        <input type="radio" id="opt4" name="q6" value="opt4">
           <label for="opt4">Agree Upto 25%</label>
-        <input type="radio" id="opt5" name="q5" value="opt5">
+        <input type="radio" id="opt5" name="q6" value="opt5">
           <label for="opt5">Completly Disagree</label><br><br>
         <button type="submit">Submit</button>
 

@@ -17,10 +17,32 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    let viewProfileTemplate = fs.readFileSync(__dirname + "/models/users.html", "utf-8");
-    res.contentType("text/html");
-    res.send(viewProfileTemplate);
+    // let viewProfileTemplate = fs.readFileSync(__dirname + "/models/users.html", "utf-8");
+    // res.contentType("text/html");
+    // res.send(viewProfileTemplate);
+    res.sendFile(__dirname + "/models/users.html");
 });
+
+app.post('/myaction', function(req, res) {
+
+    console.log('req.body');
+    console.log(req.body);
+    res.write('Student Id: "' + req.body.sname+'".\n');
+    res.write('Faculty Id: "' + req.body.fname+'".\n');
+    res.write('1.Effectively utilizes the classroom interaction time for syllabus transaction; illustrate the concepts through examples & applications and creates interest in the course?  "' + req.body.q1+'".\n');
+    res.write('2.Is fair in evaluation aspects of internal examination? "' + req.body.q2+'".\n');
+    res.write('3.Makes efforts to inculcate life skills and employability/ Professional skills to make you ready for the world of work. "' + req.body.q3+'".\n');
+    res.write('4.Comes prepared for the class and has helpful approach to the students. "' + req.body.q4+'".\n');
+    res.write('5.Discusses about expected competencies, Course outcomes, Program outcomes and lesson planning with thestudents."' + req.body.q5+'".\n');
+    res.write('6.Utilizes student centric methods, such as experiential learning, participative learning and problem solving methodologies for enhancing learning experiences. "' + req.body.q6+'".\n');
+    res.end()
+    
+    // client.query("Insert into tblfeedbackInfo (sname,fname,email,city,pincode) VALUES ('"+req.body.name+"','"+req.body.email+"','"+req.body.city+"','"+req.body.pincode+"')",function(err, result)      
+    // {                                                      
+    //   if (err)
+    //      throw err;
+    // });
+    });
 
 app.get("/db-create", (req, res) => {
   const dbQuery = "CREATE DATABASE IF NOT EXISTS dbfeedback";

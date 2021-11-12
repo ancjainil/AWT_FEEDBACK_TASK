@@ -7,7 +7,8 @@ var tblfeedbackInfo = `CREATE TABLE IF NOT EXISTS tblfeedbackInfo(
     Q4 varchar(50) NOT NULL,
     Q5 varchar(50) NOT NULL,
     Q6 varchar(50) NOT NULL,
-    FOREIGN KEY (facultyId) REFERENCES tblFacultyInfo(facultyId)
+    FOREIGN KEY (facultyId) REFERENCES tblFacultyInfo(facultyId),
+    PRIMARY KEY (feedbackId)
 );`
 
 module.exports = tblfeedbackInfo;
