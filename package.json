@@ -1,0 +1,23 @@
+{
+  "name": "awt_feedback_task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ancjainil/AWT_FEEDBACK_TASK.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ancjainil/AWT_FEEDBACK_TASK/issues"
+  },
+  "homepage": "https://github.com/ancjainil/AWT_FEEDBACK_TASK#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15"
+  }
+}
