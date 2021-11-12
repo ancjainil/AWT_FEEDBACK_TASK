@@ -69,42 +69,58 @@ app.get('/db-create-table/:type', (req, res) => {
     })
 });
 
-// app.post('/db-insert/:type', (req, res) => {
-//     let dbRow
-//     let type = req.params.type
+// app.get("/addentries3", (req, res) => {
+//     let sql =
+//       "INSERT INTO tblFeedbackInfo(feedbackID,subID,EXCELLENT,VERYGOOD,GOOD) VALUES ?";
+//     let VALUES = [
+//       ["101", "11", "50", "20", "30"],
+//       ["202", "22", "60", "10", "30"],
+//       ["303", "33", "30", "30", "40"],
+//     ];
+//     let query = db.query(sql, [VALUES], (err, result) => {
+//       if (err) throw err;
+//       console.log("Numbers of records inserted: " + result.affectedRows);
+//     });
+//   });
 
-//     if (type == "student") {
-//         dbRow = insertStudent(req, res);
-//     } else if (type == "competitiveexam") {
-//         dbRow = insertCompetitiveExam(req, res);
-//     } else if (type == "admission") {
-//         dbRow = insertAdmission(req, res);
-//     } else {
-//         return res.status(400).json({
-//             error: "Type Specified is Invalid."
-//         })
-//     }
+app.post('/db-insert/:type', (req, res) => {
+    let dbRow
+    let type = req.params.type
 
-//     dbConnection.query(`USE dblor`, (err, result) => {
-//         if (err) {
-//             console.log(err)
-//             return res.status(400).json({
-//                 error: "Database cant be accessed."
-//             })
-//         }
-//         dbConnection.query(dbRow, (err, result) => {
-//             if (err) {
-//                 console.log(err)
-//                 return res.status(400).json({
-//                     error: "Rows could not be inserted."
-//                 })
-//             }
-//             return res.status(200).json({
-//                 message: `${type}Info Inserted Successfully in tbl${type}Info .`
-//             })
-//         })
-//     })
-// })
+    if (type == "faculty") {
+        dbRow = insertFaculty(req, res);
+    } 
+    // else if (type == "competitiveexam") {
+    //     dbRow = insertCompetitiveExam(req, res);
+    // } else if (type == "admission") {
+    //     dbRow = insertAdmission(req, res);
+    // }
+     else {
+        return res.status(400).json({
+            error: "Type Specified is Invalid."
+        })
+    }
+
+    dbConnection.query(`USE dbfeedback`, (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(400).json({
+                error: "Database cant be accessed."
+            })
+        }
+        dbConnection.query(dbRow, (err, result) => {
+            if (err) {
+                console.log(err)
+                return res.status(400).json({
+                    error: "Rows could not be inserted."
+                })
+            }
+            return res.status(200).json({
+                message: `${type}Info Inserted Successfully in tbl${type}Info .`
+            })
+        })
+    })
+})
 
 // app.get('/db-display', (req, res)=>{
 

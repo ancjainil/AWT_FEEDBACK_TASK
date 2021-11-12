@@ -3,7 +3,7 @@ const insertFaculty = (req, res) => {
     let facultyName = req.body.facultyName;
    
 
-    let insertFacultyQuery = `INSERT INTO tblAdmissionInfo (universityName, courseName, countryName, admissionYear, studentId) 
+    let insertFacultyQuery = `INSERT INTO tblFacultyInfo (facultyId, facultyName) 
         VALUES ('${facultyId}', '${facultyName}')`;
 
     return insertFacultyQuery;

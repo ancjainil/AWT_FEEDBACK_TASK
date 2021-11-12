@@ -8,7 +8,7 @@ const insertfeedback = (req, res) => {
     let Q5 = req.body.Q5;
     let Q6 = req.body.Q6;
 
-    let insertfeedbackQuery = `INSERT INTO tblCompetitiveExam (greScore, ieltsScore, toeflScore, gmatScore, studentId) 
+    let insertfeedbackQuery = `INSERT INTO tblfeedbackInfo (feedbackId, facultyId, Q1, Q2, Q3, Q4, Q5, Q6) 
         VALUES ('${feedbackId}', '${facultyId}', '${Q1}', '${Q2}', '${Q3}', '${Q4}', '${Q5}', '${Q6}')`;
 
     return insertfeedbackQuery;
