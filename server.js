@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const dbConnection = require("./dbconfig");
 const tblFacultyInfo = require("./models/faculty.js");
 const tblfeedbackInfo = require("./models/feedback.js");
+const fs = require("fs");
 
 // const {insertFaculty, displayInfoById, displayInfoByAdmissionYear, displayAll} = require('./src/controllers/student.controller');
 const insertfeedback = require("./controllers/feedback_controller.js");
@@ -15,9 +16,11 @@ const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 
-// app.get('/', (req, res) => {
-//     res.send("Faculty Feedback Application.");
-// });
+app.get('/', (req, res) => {
+    let viewProfileTemplate = fs.readFileSync(__dirname + "/models/users.html", "utf-8");
+    res.contentType("text/html");
+    res.send(viewProfileTemplate);
+});
 
 app.get("/db-create", (req, res) => {
   const dbQuery = "CREATE DATABASE IF NOT EXISTS dbfeedback";
