@@ -14,4 +14,12 @@ const insertfeedback = (req, res) => {
     return insertfeedbackQuery;
 }
 
-module.exports = insertfeedback;
+// module.exports = insertfeedback;
+
+const displayInfoById = (id, res) => {
+    let displayInfoByIdQuery = `SELECT * FROM tblfeedbackInfo JOIN tblFacultyInfo WHERE 
+    tblfeedbackInfo.facultyId = tblFacultyInfo.facultyId and tblfeedbackInfo.facultyId ='${id}'`;
+    return displayInfoByIdQuery;
+}
+
+module.exports = {insertfeedback, displayInfoById};

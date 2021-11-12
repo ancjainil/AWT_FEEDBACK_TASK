@@ -10,9 +10,8 @@ const fs = require("fs");
 // const {insertFaculty, displayInfoById, displayInfoByAdmissionYear, displayAll} = require('./src/controllers/student.controller');
 // const insertfeedback = require("./controllers/feedback_controller.js");
 const insertFaculty = require("./controllers/faculty_controller.js");
-
+const {insertfeedback, displayInfoById} = require('./controllers/feedback_controller.js');
 require('dotenv').config();
-
 
 
 const app = express();
@@ -116,19 +115,7 @@ app.post('/myaction', function(req, res) {
     });
     });
 
-// app.get("/addentries3", (req, res) => {
-//     let sql =
-//       "INSERT INTO tblFeedbackInfo(feedbackID,subID,EXCELLENT,VERYGOOD,GOOD) VALUES ?";
-//     let VALUES = [
-//       ["101", "11", "50", "20", "30"],
-//       ["202", "22", "60", "10", "30"],
-//       ["303", "33", "30", "30", "40"],
-//     ];
-//     let query = db.query(sql, [VALUES], (err, result) => {
-//       if (err) throw err;
-//       console.log("Numbers of records inserted: " + result.affectedRows);
-//     });
-//   });
+
 
 app.post("/db-insert/:type", (req, res) => {
   let dbRow;
@@ -169,52 +156,23 @@ app.post("/db-insert/:type", (req, res) => {
   });
 });
 
-// app.get('/db-display', (req, res)=>{
 
-//     dbConnection.query(`USE dblor`, (err, result) => {
-//         if (err) {
-//             console.log(err)
-//             return res.status(400).json({
-//                 error: "Database cant be accessed."
-//             })
-//         }
-//         dbConnection.query(displayAll(), (err, result) => {
-//             return res.status(200).json(result);
-//         })
-//     })
-// })
-
-// app.get('/db-display-id/:id', (req, res)=>{
-//     let id = req.params.id;
-
-//     dbConnection.query(`USE dblor`, (err, result) => {
-//         if (err) {
-//             console.log(err)
-//             return res.status(400).json({
-//                 error: "Database cant be accessed."
-//             })
-//         }
-//         dbConnection.query(displayInfoById(id), (err, result) => {
-//             return res.status(200).json(result);
-//         })
-//     })
-// });
-
-// app.get('/db-display-year/:year', (req, res)=>{
-//     let year = req.params.year;
-
-//     dbConnection.query(`USE dblor`, (err, result) => {
-//         if (err) {
-//             console.log(err)
-//             return res.status(400).json({
-//                 error: "Database cant be accessed."
-//             })
-//         }
-//         dbConnection.query(displayInfoByAdmissionYear(year), (err, result) => {
-//             return res.status(200).json(result);
-//         })
-//     })
-// });
+app.get('/db-display-id/:id', (req, res)=>{
+    let id = req.params.id;
+    
+    dbConnection.query(`USE dbfeedback`, (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(400).json({
+                error: "Database cant be accessed."
+            })
+        }
+        dbConnection.query(displayInfoById(id), (err, result) => {
+            
+            return res.status(200).json(result);
+        })
+    })
+});
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
